@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "school-assistant"
+version = "0.0.1"
+description = "LangChain LLM application."
+authors = ["Person0"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = "~0.0.2"
+py-cord = "^2.4.1"
+python-dotenv = "^1.0.0"
+openai = "^0.27.5"
+streamlit = "^1.25.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

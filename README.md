@@ -1,2 +1,2 @@
-# school-assistant-app
-The app for the custom LLM used in School Assistant project.
+# School Assistant App
+The app for the custom LLM used in the School Assistant project.
