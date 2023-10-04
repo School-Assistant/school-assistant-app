@@ -1,12 +1,13 @@
 from telebot.async_telebot import AsyncTeleBot
 import asyncio
+import os
 
 from main_console import get_llm_response
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage
 
 
-bot = AsyncTeleBot('TOKEN')
+bot = AsyncTeleBot(os.environ['TELEGRAM_API_TOKEN'])
 
 messages = []
 
