@@ -108,3 +108,5 @@ xmltodict==0.13.0
 yarl==1.9.2
 zipp==3.16.2
 zstandard==0.21.0
+pyTelegramBotAPI==4.13.0
+asyncio==3.4.3
