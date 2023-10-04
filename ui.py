@@ -3,7 +3,7 @@ import asyncio
 
 from main_console import get_llm_response
 from langchain.chat_models import ChatOpenAI
-from langchain.chat_models import HumanMessage
+from langchain.schema import HumanMessage
 
 
 bot = AsyncTeleBot('TOKEN')
