@@ -1,0 +1,11 @@
+_type: prompt
+input_variables:
+    ["history"]
+template: >
+    Analyze the dialogue to understand the student's needs and current obstacles. Strategize on how to guide them towards the solution effectively. Consider what additional information could improve your guidance.
+
+    Current dialog:
+    {history}
+
+    User characteristics: 
+    Grade: 11
