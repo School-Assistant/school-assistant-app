@@ -41,6 +41,15 @@ function_descriptions = [
 ]
 
 def wolfram_alpha_query(query):
+    """Query Wolfram Alpha API and return results.
+    
+    Parameters:
+        query (str): Wolfram Alpha-compatible query.
+        
+    Returns:
+        list or str: Extracted results or error message.
+    """
+    
     base_url = "http://api.wolframalpha.com/v2/query"
     params = {
         "input": query,
@@ -52,7 +61,6 @@ def wolfram_alpha_query(query):
     response = requests.get(base_url, params=params)
     data = response.json()
 
-    # Check if the request was successful
     if data["queryresult"]["success"] and data["queryresult"]["numpods"] > 0:
         # Extracting results from relevant pods
         results = []
