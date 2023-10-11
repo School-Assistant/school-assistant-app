@@ -11,30 +11,15 @@ from dotenv import load_dotenv
 import ast
 import logging
 
-# !!! requires following env variables set: OPENAI_API_KEY, WOLFRAM_APP_ID !!!
+# requires following env variables set: OPENAI_API_KEY, WOLFRAM_APP_ID
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 load_dotenv()
 
 
-THOUGHT_PROMPT = """Analyze the dialogue to understand the student's needs and current obstacles. Strategize on how to guide them towards the solution effectively. Consider what additional information could improve your guidance.
-
-Current dialog:
-{history}
-
-User characteristics: 
-Grade: 11
-"""
-
-SYSTEM_PROMPT = """Assist the student in solving math problems. Provide hints, ask questions, clarify concepts. Use Wolfram Alpha for internal validation but never reveal full solutions. If the user has arrived at a solution, you may confirm its correctness or provide corrections. Multiple approaches? Ask for preference.
-
-{thought}
-
-Remember to validate the solutions.
-
-User Grade: 11
-"""
+THOUGHT_PROMPT = load_prompt(os.path.join(os.path.dirname(__file__), 'prompts/thought.yaml'))
+SYSTEM_PROMPT = load_prompt(os.path.join(os.path.dirname(__file__), 'prompts/system.yaml'))
 
 
 function_descriptions = [
@@ -56,6 +41,15 @@ function_descriptions = [
 ]
 
 def wolfram_alpha_query(query):
+    """Query Wolfram Alpha API and return results.
+    
+    Parameters:
+        query (str): Wolfram Alpha-compatible query.
+        
+    Returns:
+        list or str: Extracted results or error message.
+    """
+    
     base_url = "http://api.wolframalpha.com/v2/query"
     params = {
         "input": query,
@@ -67,7 +61,6 @@ def wolfram_alpha_query(query):
     response = requests.get(base_url, params=params)
     data = response.json()
 
-    # Check if the request was successful
     if data["queryresult"]["success"] and data["queryresult"]["numpods"] > 0:
         # Extracting results from relevant pods
         results = []
