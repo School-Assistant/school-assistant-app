@@ -20,6 +20,7 @@ openai==0.28.1
 openapi-schema-pydantic==1.2.4
 packaging==23.2
 pydantic==1.10.13
+PyPDF2==3.0.1
 pyTelegramBotAPI==4.13.0
 python-dotenv==1.0.0
 PyYAML==6.0.1
@@ -33,5 +34,3 @@ urllib3==2.0.6
 yarl==1.9.2
 zipp==3.16.2
 zstandard==0.21.0
-pyTelegramBotAPI==4.13.0
-asyncio==3.4.3
